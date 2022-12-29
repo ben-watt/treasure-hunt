@@ -1,0 +1,30 @@
+{
+  "dev": {
+    "awscloudformation": {
+      "AuthRoleName": "amplify-treasurehunt-dev-110920-authRole",
+      "UnauthRoleArn": "arn:aws:iam::127018213569:role/amplify-treasurehunt-dev-110920-unauthRole",
+      "AuthRoleArn": "arn:aws:iam::127018213569:role/amplify-treasurehunt-dev-110920-authRole",
+      "Region": "eu-west-1",
+      "DeploymentBucketName": "amplify-treasurehunt-dev-110920-deployment",
+      "UnauthRoleName": "amplify-treasurehunt-dev-110920-unauthRole",
+      "StackName": "amplify-treasurehunt-dev-110920",
+      "StackId": "arn:aws:cloudformation:eu-west-1:127018213569:stack/amplify-treasurehunt-dev-110920/e9ace0b0-85d6-11ed-8ad7-0a8e060efd93",
+      "AmplifyAppId": "d1bg0ci1ozsqff",
+      "APIGatewayAuthURL": "https://s3.amazonaws.com/amplify-treasurehunt-dev-110920-deployment/amplify-cfn-templates/api/APIGatewayAuthStack.json"
+    },
+    "categories": {
+      "function": {
+        "generatetreasurehunt": {
+          "deploymentBucketName": "amplify-treasurehunt-dev-110920-deployment",
+          "s3Key": "amplify-builds/generatetreasurehunt-7743684e71344c524537-build.zip"
+        }
+      },
+      "auth": {
+        "treasurehunt": {}
+      },
+      "api": {
+        "treasurehunt": {}
+      }
+    }
+  }
+}

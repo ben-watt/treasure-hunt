@@ -1,0 +1,20 @@
+{
+  "version": 1,
+  "paths": {
+    "/generate": {
+      "name": "/generate",
+      "lambdaFunction": "generatetreasurehunt",
+      "permissions": {
+        "setting": "protected",
+        "auth": [
+          "create",
+          "read"
+        ],
+        "guest": [
+          "create",
+          "read"
+        ]
+      }
+    }
+  }
+}
