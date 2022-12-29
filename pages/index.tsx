@@ -18,7 +18,7 @@ export default function Home() {
   ])
 
   const generate = async () => {
-    API.post("treasurehunt", "generate", { body: waypoints.toString() })
+    API.post("treasurehunt", "/generate", { body: waypoints.toString() })
       .then(res => {
         console.log(res)
       })
@@ -37,8 +37,8 @@ export default function Home() {
       </Head>
       <div>
         <div className="absolute z-[-1] w-screen">
-            <Image src="/../public/map.png" alt="map" fill className="!relative !h-auto"></Image>
-            <Image src="/../public/coin.png" alt="coin" fill className="!relative !h-auto"></Image>
+            <Image src="/map.png" alt="map" fill className="!relative !h-auto"></Image>
+            <Image src="/coin.png" alt="coin" fill className="!relative !h-auto"></Image>
         </div>
       </div>
       <main className={styles.main}>
