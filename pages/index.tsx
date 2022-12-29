@@ -36,12 +36,12 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <div>
-        <div className="absolute z-[-1] w-screen">
+        <div className="absolute z-[-1] w-screen max-h-screen overflow-y-hidden">
             <Image src="/map.png" alt="map" fill className="!relative !h-auto"></Image>
             <Image src="/coin.png" alt="coin" fill className="!relative !h-auto"></Image>
         </div>
       </div>
-      <main className={styles.main}>
+      <main className="flex flex-col justify-between content-center p-3 pt-1 sm:p-28 min-h-screen">
         <div>
           <section className="m-14">
             <h1 className="text-4xl md:text-6xl font-bold text-center text-stone-800">Create your own<br/>Treasure Hunt</h1>
@@ -70,7 +70,7 @@ export default function Home() {
                         className="mb-1 px-3 py-2 w-full min-w-[5rem] bg-stone-600 text-orange-300 rounded hover:bg-stone-600 focus:outline-dotted focus:outline-red-800" 
                         contentEditable="true"
                         onKeyDown={ev => {
-                          if(ev.key === "Enter" && ev.currentTarget.textContent != "") {
+                          if((ev.key === "enter" || ev.key === "Enter") && ev.currentTarget.textContent != "") {
                             ev.preventDefault()
                             let content = ev.currentTarget.textContent!;
                             setWaypoints(prevState => prevState.concat({ index: prevState.length, description: content }))
@@ -88,16 +88,16 @@ export default function Home() {
               <div className="p-3">
                 <p className="mb-2 ">Difficulty</p>
                 <div className="flex space-x-10">
-                  <Button className={`px-3 py-2 min-w-[6rem] bg-stone-800 text-orange-300 rounded hover:bg-stone-600 focus:outline-dotted focus:outline-red-800 ${difficulty === "easy" && "bg-red-900 hover:bg-red-900"}`} onClick={() => setDifficulty("easy")}>Easy</Button>
-                  <Button className={`px-3 py-2 min-w-[6rem] bg-stone-800 text-orange-300 rounded hover:bg-stone-600 focus:outline-dotted focus:outline-red-800 ${difficulty === "medium" && "bg-red-900 hover:bg-red-900"}`} onClick={() => setDifficulty("medium")}>Medium</Button>
-                  <Button className={`px-3 py-2 min-w-[6rem] bg-stone-800 text-orange-300 rounded hover:bg-stone-600 focus:outline-dotted focus:outline-red-800 ${difficulty === "hard" && "bg-red-900 hover:bg-red-900"}`} onClick={() => setDifficulty("hard")}>Hard</Button>
+                  <Button className={`py-2 min-w-[5rem] bg-stone-800 text-orange-300 rounded hover:bg-stone-600 focus:outline-dotted focus:outline-red-800 ${difficulty === "easy" && "bg-red-900 hover:bg-red-900"}`} onClick={() => setDifficulty("easy")}>Easy</Button>
+                  <Button className={`py-2 min-w-[5rem] bg-stone-800 text-orange-300 rounded hover:bg-stone-600 focus:outline-dotted focus:outline-red-800 ${difficulty === "medium" && "bg-red-900 hover:bg-red-900"}`} onClick={() => setDifficulty("medium")}>Medium</Button>
+                  <Button className={`py-2 min-w-[5rem] bg-stone-800 text-orange-300 rounded hover:bg-stone-600 focus:outline-dotted focus:outline-red-800 ${difficulty === "hard" && "bg-red-900 hover:bg-red-900"}`} onClick={() => setDifficulty("hard")}>Hard</Button>
                 </div>
               </div>
               <div className="p-3">
                 <p className="mb-2">Rhyming</p>
                 <div className="flex space-x-10">
-                  <Button className={`px-3 py-2 min-w-[6rem] bg-stone-800 text-orange-300 rounded hover:bg-stone-600 focus:outline-dotted focus:outline-red-800 ${rhyming && "bg-red-900 hover:bg-red-900"}`} onClick={() => setRhyming(true)}>Yes</Button>
-                  <Button className={`px-3 py-2 min-w-[6rem] bg-stone-800 text-orange-300 rounded hover:bg-stone-600 focus:outline-dotted focus:outline-red-800 ${!rhyming && "bg-red-900 hover:bg-red-900"}`} onClick={() => setRhyming(false)}>No</Button>
+                  <Button className={`py-2 min-w-[5rem] bg-stone-800 text-orange-300 rounded hover:bg-stone-600 focus:outline-dotted focus:outline-red-800 ${rhyming && "bg-red-900 hover:bg-red-900"}`} onClick={() => setRhyming(true)}>Yes</Button>
+                  <Button className={`py-2 min-w-[5rem] bg-stone-800 text-orange-300 rounded hover:bg-stone-600 focus:outline-dotted focus:outline-red-800 ${!rhyming && "bg-red-900 hover:bg-red-900"}`} onClick={() => setRhyming(false)}>No</Button>
                 </div>
               </div>
             </div>
