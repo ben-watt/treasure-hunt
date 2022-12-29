@@ -18,7 +18,7 @@ export default function Home() {
   ])
 
   const generate = async () => {
-    API.post("treasurehunt", "/generate", { body: waypoints.toString() })
+    API.post("treasurehunt", "/generate", { body: JSON.stringify(waypoints) })
       .then(res => {
         console.log(res)
       })
@@ -41,7 +41,7 @@ export default function Home() {
             <Image src="/coin.png" alt="coin" fill className="!relative !h-auto"></Image>
         </div>
       </div>
-      <main className="flex flex-col justify-between content-center p-3 pt-1 sm:p-28 min-h-screen">
+      <main className="flex flex-col justify-between content-center p-3 pt-1 sm:p-28 sm:max-w-4xl m-auto min-h-screen">
         <div>
           <section className="m-14">
             <h1 className="text-4xl md:text-6xl font-bold text-center text-stone-800">Create your own<br/>Treasure Hunt</h1>
