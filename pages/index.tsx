@@ -5,6 +5,8 @@ import { useDrag } from 'react-dnd'
 import { useState } from 'react'
 import { GiSkullCrossedBones } from 'react-icons/gi';
 import { API } from '@aws-amplify/api'
+import mapPic from '../public/map.png'
+import coinPic from '../public/coin.png'
 
 export default function Home() {
   const [result, setResult] = useState("");
@@ -33,8 +35,8 @@ export default function Home() {
       </Head>
       <div>
         <div className="absolute z-[-1] w-screen max-h-screen overflow-y-hidden">
-            <Image src="/map.png" alt="map" fill className="!relative !h-auto"></Image>
-            <Image src="/coin.png" alt="coin" fill className="!relative !h-auto"></Image>
+            <Image src={mapPic} alt="map" className="!relative !h-auto w-screen" placeholder="blur"></Image>
+            <Image src={coinPic} alt="coin" className="!relative !h-auto w-screen" placeholder="blur"></Image>
         </div>
       </div>
       <main className="flex flex-col justify-between content-center p-3 pt-1 sm:p-28 sm:max-w-4xl m-auto min-h-screen">
