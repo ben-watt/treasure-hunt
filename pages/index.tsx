@@ -13,7 +13,7 @@ export default function Home() {
   const [waypoints, setWaypoints] = useState<Waypoint[]>([])
 
   const generate = async () => {
-    API.post("treasurehunt", "/generate", { body: JSON.stringify(waypoints) })
+    API.post("treasurehunt", "/generate", { body: waypoints })
       .then(res => {
         console.log(res)
       })
@@ -66,11 +66,15 @@ export default function Home() {
                         className="mb-1 px-3 py-2 w-full min-w-[5rem] bg-stone-600 text-orange-300 rounded hover:bg-stone-600 focus:outline-dotted focus:outline-red-800" 
                         contentEditable="true"
                         onKeyDown={ev => {
-                          if((ev.key === "enter" || ev.key === "Enter") && ev.currentTarget.textContent != "") {
+  
+                          if(ev.key === "Enter") {
                             ev.preventDefault()
-                            let content = ev.currentTarget.textContent!;
-                            setWaypoints(prevState => prevState.concat({ index: prevState.length, description: content }))
-                            ev.currentTarget.textContent = ""
+                            ev.stopPropagation()
+                            if(ev.currentTarget.textContent != "") {
+                              let content = ev.currentTarget.textContent!;
+                              setWaypoints(prevState => prevState.concat({ index: prevState.length, description: content }))
+                              ev.currentTarget.textContent = ""
+                            }
                           }
                         }}
                         placeholder="Enter waypoint...">
