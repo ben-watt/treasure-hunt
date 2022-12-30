@@ -56,7 +56,7 @@ const generate = async (req) => {
       });
 
     if(response.status === 200) {
-        return response.data[0].text.split("\n").trim();
+        return response.data.choices[0].text.split("\n").map(x => x.trim());
     } else {
         console.error(response.statusText)
         throw new Error("Error sending request to generate treasure hunt")

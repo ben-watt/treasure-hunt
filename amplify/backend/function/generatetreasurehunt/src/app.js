@@ -47,7 +47,7 @@ app.post('/generate', async function(req, res) {
 });
 
 app.post('/generate/*', async function(req, res) {
-  let response = generate(req)
+  let clues = generate(req)
   res.json(clues)
 });
 

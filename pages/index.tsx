@@ -47,7 +47,7 @@ export default function Home() {
           <section className="w-full">
             <div>
               <p><span className="font-bold">1. Describe where your clues are hidden</span></p>
-              <p>&nbsp;&nbsp; e.g. Under the kitchen table</p>
+              <p>&nbsp;&nbsp; e.g. Under the wooden kitchen table</p>
               <div className="p-3">
                 <ul>
                   {waypoints.map(waypoint =>
