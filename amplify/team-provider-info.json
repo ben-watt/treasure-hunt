@@ -16,7 +16,8 @@
       "function": {
         "generatetreasurehunt": {
           "deploymentBucketName": "amplify-treasurehunt-dev-110920-deployment",
-          "s3Key": "amplify-builds/generatetreasurehunt-7743684e71344c524537-build.zip"
+          "s3Key": "amplify-builds/generatetreasurehunt-7743684e71344c524537-build.zip",
+          "secretsPathAmplifyAppId": "d1bg0ci1ozsqff"
         }
       },
       "auth": {

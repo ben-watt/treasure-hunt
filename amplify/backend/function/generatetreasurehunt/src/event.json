@@ -7,5 +7,5 @@
   "headers": {
     "Content-Type": "application/json"
   },
-  "body": "[{\"index\":\"1\", \"description\": \"Something\"}]"
+  "body": "[{\"index\":\"1\", \"description\": \"Inside the book 'Old mans house'\"}]"
 }

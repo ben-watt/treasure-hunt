@@ -1,4 +1,18 @@
 /*
+Use the following code to retrieve configured secrets from SSM:
+
+const aws = require('aws-sdk');
+
+const { Parameters } = await (new aws.SSM())
+  .getParameters({
+    Names: ["gpt3_api_key"].map(secretName => process.env[secretName]),
+    WithDecryption: true,
+  })
+  .promise();
+
+Parameters will be of the form { Name: 'secretName', Value: 'secretValue', ... }[]
+*/
+/*
 Copyright 2017 - 2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with the License. A copy of the License is located at
     http://aws.amazon.com/apache2.0/
@@ -9,7 +23,7 @@ See the License for the specific language governing permissions and limitations 
 const express = require('express')
 const bodyParser = require('body-parser')
 const awsServerlessExpressMiddleware = require('aws-serverless-express/middleware')
-const { forEachChild } = require('typescript')
+const generate = require('./generate')
 
 // declare a new express app
 const app = express()
@@ -26,50 +40,15 @@ app.use(function(req, res, next) {
 /****************************
 * Example post method *
 ****************************/
-const generate = async (req) => {
-let body = `You will play the role of TreasureHuntBot, you take in a list of items and return a rhyming clue for each. The clue must not contain the item, it must be a single sentence, it must rhyme and it should be a puzzle. For example:
-
-  User: 
-  Lounge chair, in the dining room
-  Under the black dining table in the kitchen
-  At the back of the greenhouse under a brown pot
-  
-  TreasureHuntBot:
-  Find a spot to sit and stop, the treasure is hidden in that spot
-  Has four legs and is black, it's under that!
-  Where plants are nurtured and given care, the treasure is hidden somewhere there
-  
-  User: 
-  Behind the computer
-  Under the stairs
-  Behind the couch
-  
-  TreasureHuntBot:
-  You'll find the next clue where the screen is bright and blue
-  Up and down you'll search today but underneath is where it lays
-  Comfy cosy a place to sit, the clue lies behind this bit\n\nUser:\n`
-
-
-  for(let item in req.body) {
-    body += item.description
-  }
-  
-  
-  let request = { headers: { "Authorization" : `Bearer ${apiKey}` }, method: "POST", body: body };
-  let response = await fetch("https://api.openai.com/v1/completions", request);
-  console.log(response)
-  return response
-}
-
 
 app.post('/generate', async function(req, res) {
-  let response = await generate(req)
-  res.json({success: 'post call succeed!', url: req.url, body: req.body})
+  let clues = await generate(req)
+  res.json(clues)
 });
 
 app.post('/generate/*', async function(req, res) {
   let response = generate(req)
-  res.json({success: 'post call succeed!', url: req.url, body: req.body})
+  res.json(clues)
 });
 
 // Export the app object. When executing the application local this does nothing. However,

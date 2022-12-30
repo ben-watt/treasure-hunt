@@ -16,6 +16,7 @@ export default function Home() {
     API.post("treasurehunt", "/generate", { body: waypoints })
       .then(res => {
         console.log(res)
+        setResult(res.join('\n'))
       })
       .catch(rej => {
         console.error(rej)
