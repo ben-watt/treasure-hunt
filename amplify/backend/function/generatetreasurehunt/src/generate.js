@@ -56,7 +56,7 @@ const generate = async (req) => {
       });
 
     if(response.status === 200) {
-        return response.data.map(x => x.text);
+        return response.data.choices.map(x => x.text);
     } else {
         console.error(response.statusText)
         throw new Error("Error sending request to generate treasure hunt")
