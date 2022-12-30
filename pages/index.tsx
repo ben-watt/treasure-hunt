@@ -11,11 +11,7 @@ export default function Home() {
   const [result, setResult] = useState("");
   const [difficulty, setDifficulty] = useState("easy");
   const [rhyming, setRhyming] = useState(true);
-  const [waypoints, setWaypoints] = useState<Waypoint[]>([
-    { index: 1, description:  "Lounge chair in the dining room"},
-    { index: 2, description:  "Blue pot in the greenhouse"},
-    { index: 3, description:  "Behind the fireplace"}
-  ])
+  const [waypoints, setWaypoints] = useState<Waypoint[]>([])
 
   const generate = async () => {
     API.post("treasurehunt", "/generate", { body: JSON.stringify(waypoints) })
@@ -48,7 +44,8 @@ export default function Home() {
           </section>
           <section className="w-full">
             <div>
-              <p className="font-bold">1. Describe your waypoints</p>
+              <p><span className="font-bold">1. Describe where your clues are hidden</span></p>
+              <p>&nbsp;&nbsp; e.g. Under the kitchen table</p>
               <div className="p-3">
                 <ul>
                   {waypoints.map(waypoint =>
@@ -84,7 +81,7 @@ export default function Home() {
               </div>
             </div>
             <div className="mt-5">
-              <p className="font-bold">2. Options</p>
+              {/* <p className="font-bold">2. Options</p>
               <div className="p-3">
                 <p className="mb-2 ">Difficulty</p>
                 <div className="flex space-x-10">
@@ -92,7 +89,7 @@ export default function Home() {
                   <Button className={`py-2 min-w-[5rem] bg-stone-800 text-orange-300 rounded hover:bg-stone-600 focus:outline-dotted focus:outline-red-800 ${difficulty === "medium" && "bg-red-900 hover:bg-red-900"}`} onClick={() => setDifficulty("medium")}>Medium</Button>
                   <Button className={`py-2 min-w-[5rem] bg-stone-800 text-orange-300 rounded hover:bg-stone-600 focus:outline-dotted focus:outline-red-800 ${difficulty === "hard" && "bg-red-900 hover:bg-red-900"}`} onClick={() => setDifficulty("hard")}>Hard</Button>
                 </div>
-              </div>
+              </div> */}
               <div className="p-3">
                 <p className="mb-2">Rhyming</p>
                 <div className="flex space-x-10">
