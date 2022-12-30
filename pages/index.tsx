@@ -1,6 +1,5 @@
 import Head from 'next/head'
 import Image from 'next/image'
-import styles from '../styles/Home.module.css'
 import { Button, Icon } from '@aws-amplify/ui-react'
 import { useDrag } from 'react-dnd'
 import { useState } from 'react'
@@ -81,8 +80,8 @@ export default function Home() {
               </div>
             </div>
             <div className="mt-5">
-              {/* <p className="font-bold">2. Options</p>
-              <div className="p-3">
+              <p className="font-bold">2. Options</p>
+              {/* <div className="p-3">
                 <p className="mb-2 ">Difficulty</p>
                 <div className="flex space-x-10">
                   <Button className={`py-2 min-w-[5rem] bg-stone-800 text-orange-300 rounded hover:bg-stone-600 focus:outline-dotted focus:outline-red-800 ${difficulty === "easy" && "bg-red-900 hover:bg-red-900"}`} onClick={() => setDifficulty("easy")}>Easy</Button>

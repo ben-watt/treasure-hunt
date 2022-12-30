@@ -22,7 +22,12 @@ app.use(awsServerlessExpressMiddleware.eventContext())
 app.use(function(req, res, next) {
   res.header("Access-Control-Allow-Origin", "*")
   res.header("Access-Control-Allow-Headers", "*")
-  next()
+  
+  if ('OPTIONS' === request.method) {
+    res.send(200);
+  } else {
+    next();
+  }
 });
 
 /****************************
