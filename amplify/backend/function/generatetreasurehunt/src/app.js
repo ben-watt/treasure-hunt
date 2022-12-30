@@ -26,7 +26,7 @@ app.use(function(req, res, next) {
 /****************************
 * Example post method *
 ****************************/
-const generate = async (req, res) => {
+const generate = async (req) => {
 let body = `You will play the role of TreasureHuntBot, you take in a list of items and return a rhyming clue for each. The clue must not contain the item, it must be a single sentence, it must rhyme and it should be a puzzle. For example:
 
   User: 
@@ -56,19 +56,19 @@ let body = `You will play the role of TreasureHuntBot, you take in a list of ite
   
   
   let request = { headers: { "Authorization" : `Bearer ${apiKey}` }, method: "POST", body: body };
-  let res = await fetch("https://api.openai.com/v1/completions", request);
-  console.log(res)
-  return res
+  let response = await fetch("https://api.openai.com/v1/completions", request);
+  console.log(response)
+  return response
 }
 
 
 app.post('/generate', async function(req, res) {
-  let res = await generate(req, res)
+  let response = await generate(req)
   res.json({success: 'post call succeed!', url: req.url, body: req.body})
 });
 
 app.post('/generate/*', async function(req, res) {
-  let res = generate(req, res)
+  let response = generate(req)
   res.json({success: 'post call succeed!', url: req.url, body: req.body})
 });
 

@@ -1,11 +1,11 @@
 {
   "httpMethod": "POST",
-  "path": "/item",
+  "path": "/generate",
   "queryStringParameters": {
     "limit": "10"
   },
   "headers": {
     "Content-Type": "application/json"
   },
-  "body": "{\"msg\":\"Hello from the event.json body\"}"
+  "body": "[{\"index\":\"1\", \"description\": \"Something\"}]"
 }
