@@ -96,8 +96,7 @@ export default function Home() {
                               ev.currentTarget.textContent = ""
                             }
                           }
-                        }}
-                        placeholder="Enter waypoint...">
+                        }}>
                     </div>
                   </li>
                 </ul>
@@ -119,6 +118,7 @@ export default function Home() {
                   <Button className={`py-2 min-w-[5rem] bg-stone-800 text-orange-300 rounded hover:bg-stone-600 focus:outline-dotted focus:outline-red-800 ${rhyming && "bg-red-900 hover:bg-red-900"}`} onClick={() => setRhyming(true)}>Yes</Button>
                   <Button className={`py-2 min-w-[5rem] bg-stone-800 text-orange-300 rounded hover:bg-stone-600 focus:outline-dotted focus:outline-red-800 ${!rhyming && "bg-red-900 hover:bg-red-900"}`} onClick={() => setRhyming(false)}>No</Button>
                 </div>
+
               </div>
             </div> */}
           </section>
@@ -130,8 +130,28 @@ export default function Home() {
           <section className="flex justify-center mt-14">
             <GenerateButton isLoading={loading} onClick={generate} />
           </section>
+
           <section className="mt-10 text-orange-900">
-            {result.map((clue, i) => <p key={i} className="p-2">{clue}</p>)}
+            {
+              result.map((clue, i) => {
+                return (
+                  <div key={i}>
+                    <svg className="h-0">
+                      <filter id={`wavy-${i}`}>
+                        <feTurbulence x="0" y="0" baseFrequency="0.02" numOctaves="5" seed={i * 100}></feTurbulence>
+                        <feDisplacementMap in="SourceGraphic" scale="20" />
+                      </filter>
+                    </svg>
+                    <div className="relative mb-10">
+                      <div className={`absolute h-full w-80 bg-[#fffef0] shadow-parchment [filter:url('#wavy-${i}')]`}>
+                      </div>
+                      <div className='relative p-6'>
+                        <p>{clue}</p>
+                      </div>
+                    </div>
+                  </div> 
+                )})
+            }
           </section>
         </div>
       </main>
