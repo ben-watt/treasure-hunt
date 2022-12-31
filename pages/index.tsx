@@ -49,9 +49,6 @@ export default function Home() {
         <meta name="description" content="AI powered app to create your very own treasure hunt." />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
-        <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin='true' />
-        <link href="https://fonts.googleapis.com/css2?family=Abril+Fatface&display=swap" rel="stylesheet" /> 
       </Head>
       <div>
         <div className="absolute z-[-1] w-screen max-h-screen overflow-y-hidden">
@@ -89,13 +86,12 @@ export default function Home() {
                         className="mb-1 px-3 py-2 w-full min-w-[5rem] bg-stone-600 text-orange-300 rounded hover:bg-stone-600 focus:outline-dotted focus:outline-red-800" 
                         contentEditable="true"
                         onKeyDown={ev => {
-  
                           if(ev.key === "Enter") {
                             ev.preventDefault()
                             ev.stopPropagation()
-                            if(ev.currentTarget.textContent != "") {
-                              let content = ev.currentTarget.textContent!;
-                              addWaypoint(content)
+                            let text = ev.currentTarget.textContent?.trim();
+                            if(text != "" && text != null) {
+                              addWaypoint(text!)
                               ev.currentTarget.textContent = ""
                             }
                           }
