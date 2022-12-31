@@ -42,12 +42,17 @@ app.use(function(req, res, next) {
 ****************************/
 
 app.post('/generate', async function(req, res) {
-  let clues = await generate(req)
+  let clues = [];
+  for(let item of req.body) {
+    let clue = await generate(item)
+    clues.push(clue)
+  }
+  
   res.json(clues)
 });
 
 app.post('/generate/*', async function(req, res) {
-  let clues = generate(req)
+  let clues = await generate(req)
   res.json(clues)
 });
 
