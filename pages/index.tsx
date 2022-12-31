@@ -49,6 +49,9 @@ export default function Home() {
         <meta name="description" content="AI powered app to create your very own treasure hunt." />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin='true' />
+        <link href="https://fonts.googleapis.com/css2?family=Abril+Fatface&display=swap" rel="stylesheet" /> 
       </Head>
       <div>
         <div className="absolute z-[-1] w-screen max-h-screen overflow-y-hidden">
