@@ -15,9 +15,6 @@ export default function Home() {
   const [rhyming, setRhyming] = useState(true);
   const [waypoints, setWaypoints] = useState<Waypoint[]>([])
 
-  // Error if nothing supplied
-  // Fix the prompts as it's currently poor
-
   const generate = async () => {
     setLoading(true)
     API.post("treasurehunt", "/generate", { body: waypoints })
@@ -91,24 +88,24 @@ export default function Home() {
                 </ul>
               </div>
             </div>
-            <div className="mt-5">
+            {/* <div className="mt-5">
               <p className="font-bold">2. Options</p>
-              {/* <div className="p-3">
+              <div className="p-3">
                 <p className="mb-2 ">Difficulty</p>
                 <div className="flex space-x-10">
                   <Button className={`py-2 min-w-[5rem] bg-stone-800 text-orange-300 rounded hover:bg-stone-600 focus:outline-dotted focus:outline-red-800 ${difficulty === "easy" && "bg-red-900 hover:bg-red-900"}`} onClick={() => setDifficulty("easy")}>Easy</Button>
                   <Button className={`py-2 min-w-[5rem] bg-stone-800 text-orange-300 rounded hover:bg-stone-600 focus:outline-dotted focus:outline-red-800 ${difficulty === "medium" && "bg-red-900 hover:bg-red-900"}`} onClick={() => setDifficulty("medium")}>Medium</Button>
                   <Button className={`py-2 min-w-[5rem] bg-stone-800 text-orange-300 rounded hover:bg-stone-600 focus:outline-dotted focus:outline-red-800 ${difficulty === "hard" && "bg-red-900 hover:bg-red-900"}`} onClick={() => setDifficulty("hard")}>Hard</Button>
                 </div>
-              </div> */}
-              {/* <div className="p-3">
+              </div>
+              <div className="p-3">
                 <p className="mb-2">Rhyming</p>
                 <div className="flex space-x-10">
                   <Button className={`py-2 min-w-[5rem] bg-stone-800 text-orange-300 rounded hover:bg-stone-600 focus:outline-dotted focus:outline-red-800 ${rhyming && "bg-red-900 hover:bg-red-900"}`} onClick={() => setRhyming(true)}>Yes</Button>
                   <Button className={`py-2 min-w-[5rem] bg-stone-800 text-orange-300 rounded hover:bg-stone-600 focus:outline-dotted focus:outline-red-800 ${!rhyming && "bg-red-900 hover:bg-red-900"}`} onClick={() => setRhyming(false)}>No</Button>
                 </div>
-              </div> */}
-            </div>
+              </div>
+            </div> */}
           </section>
           <section className="flex justify-center mt-14">
             <GenerateButton isLoading={loading} onClick={generate} />
