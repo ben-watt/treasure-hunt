@@ -60,6 +60,7 @@ export default function Home() {
         <div>
           <section className="m-14">
             <h1 className="text-4xl md:text-6xl font-bold text-center text-stone-800">Create your own<br/>Treasure Hunt</h1>
+            <p className="text-center p-5 italic text-yellow-900">You tell us the hiding places and we'll do the rest, your the hunters find the treasure chest.</p>
           </section>
           <section className="w-full">
             <div>
