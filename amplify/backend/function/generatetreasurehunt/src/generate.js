@@ -45,9 +45,8 @@ const generate = async (item) => {
         model: "text-davinci-003",
         prompt: body,
         max_tokens: 200,
-        temperature: 0.5,
-        frequency_penalty: 0.3,
-        presence_penalty: 0.3
+        temperature: 0.6,
+        presence_penalty: 0.5
       });
 
     if(response.status === 200) {

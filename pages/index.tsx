@@ -14,8 +14,23 @@ export default function Home() {
   const [difficulty, setDifficulty] = useState("easy");
   const [rhyming, setRhyming] = useState(true);
   const [waypoints, setWaypoints] = useState<Waypoint[]>([])
+  const [error, setError] = useState("");
+
+
+  const addWaypoint = (content: string) => {
+    if(waypoints.length >= 2) {
+      setError("");
+    }
+
+    setWaypoints(prevState => prevState.concat({ index: prevState.length, description: content }));
+  }
 
   const generate = async () => {
+    if(waypoints.length < 3) {
+      setError("You need to enter at least three clues to generate a treasure hunt")
+      return;
+    }
+
     setLoading(true)
     API.post("treasurehunt", "/generate", { body: waypoints })
       .then(res => {
@@ -77,7 +92,7 @@ export default function Home() {
                             ev.stopPropagation()
                             if(ev.currentTarget.textContent != "") {
                               let content = ev.currentTarget.textContent!;
-                              setWaypoints(prevState => prevState.concat({ index: prevState.length, description: content }))
+                              addWaypoint(content)
                               ev.currentTarget.textContent = ""
                             }
                           }
@@ -107,10 +122,17 @@ export default function Home() {
               </div>
             </div> */}
           </section>
+          <section className={error === "" ? "hidden" : ""}>
+            <p className="text-red-900 text-center">
+              <span className="font-bold">Error:</span> {error}
+            </p>
+          </section>
           <section className="flex justify-center mt-14">
             <GenerateButton isLoading={loading} onClick={generate} />
           </section>
-          <section className="mt-10 text-orange-900">{result.map(clue => <p>{clue}</p>)}</section>
+          <section className="mt-10 text-orange-900">
+            {result.map((clue, i) => <p key={i} className="p-2">{clue}</p>)}
+          </section>
         </div>
       </main>
     </>
