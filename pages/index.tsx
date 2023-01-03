@@ -1,7 +1,6 @@
 import Head from 'next/head'
 import Image from 'next/image'
-import { Button, Icon } from '@aws-amplify/ui-react'
-import { useDrag } from 'react-dnd'
+import { Button } from '@aws-amplify/ui-react'
 import { useState } from 'react'
 import { GiSkullCrossedBones } from 'react-icons/gi';
 import { API } from '@aws-amplify/api'
@@ -11,6 +10,7 @@ import coinPic from '../public/coin.png'
 export default function Home() {
   const [loading, setLoading] = useState(false)
   const [result, setResult] = useState([]);
+  const [input, setInput] = useState("");
   const [difficulty, setDifficulty] = useState("easy");
   const [rhyming, setRhyming] = useState(true);
   const [waypoints, setWaypoints] = useState<Waypoint[]>([])
@@ -18,11 +18,13 @@ export default function Home() {
 
 
   const addWaypoint = (content: string) => {
+    
     if(waypoints.length >= 2) {
       setError("");
     }
 
     setWaypoints(prevState => prevState.concat({ index: prevState.length, description: content }));
+    setInput("")
   }
 
   const generate = async () => {
@@ -82,22 +84,19 @@ export default function Home() {
                     </li>
                   ))}
                   <li>
-                    <div 
+                    <input 
                         tabIndex={0} 
-                        className="mb-1 px-3 py-2 w-full min-w-[5rem] bg-stone-600 text-orange-300 rounded hover:bg-stone-600 focus:outline-dotted focus:outline-red-800" 
-                        contentEditable="true"
+                        className="mb-1 px-3 py-2 w-full min-w-[5rem] bg-stone-600 text-orange-300 rounded hover:bg-stone-600 focus:outline-dotted focus:outline-red-800"
                         onKeyUp={ev => {
+                          console.log(ev.code)
                           if(ev.key === "Enter") {
-                            ev.preventDefault()
-                            ev.stopPropagation()
-                            let text = ev.currentTarget.textContent?.trim();
-                            if(text != "" && text != null) {
-                              addWaypoint(text!)
-                              ev.currentTarget.textContent = ""
-                            }
+                              ev.preventDefault()
+                              ev.stopPropagation()
+                              addWaypoint(ev.currentTarget.value)
+                              ev.currentTarget.value = ""
                           }
                         }}>
-                    </div>
+                    </input>
                   </li>
                 </ul>
               </div>
